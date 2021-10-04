@@ -1,5 +1,7 @@
+const { json } = require('body-parser');
 const request = require('request');
-const rootURL = 'https://beermapping.com/webservice/loccity/';
+const rootURL = 'https://beermapping.com/webservice/loccity/'
+const rootURL2 = 'http://beermapping.com/webservice/locquery/'
 const imgUrl = 'https://beermapping.com/webservice/locimage/'
 let globalData = null;
 let imgData = null;
@@ -14,7 +16,17 @@ function index(req, res) {
         request(rootURL + process.env.TOKEN + '/' + req.query.search + '&s=json', function(err, response, body) {
           const index = JSON.parse(body)
           globalData = index;
+          console.log(index)
+          if (index[0].id!=null)
           res.render('index', {search: req.query.search, index: index});
+          else {
+              request(rootURL2 + process.env.TOKEN + '/' + req.query.search + '&s=json', function(err, response, body){
+                const index = JSON.parse(body)
+                globalData = index;
+                console.log(index)
+                res.render('index', {search: req.query.search, index: index});
+              })
+          }
         });
       } else {
         res.render('index', {index: null, search: null});
