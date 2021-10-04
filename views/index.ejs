@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <form action="/" method="GET">
+      <div class="input-group">
+        <input type="text" name="search" autocomplete="off" class="form-control"
+          placeholder="Enter Search">
+        <span class="input-group-btn">
+          <button class="btn btn-success"
+            type="submit">Go!</button>
+        </span>
+      </div>
+    </form>
+    <%= search %> 
+    <br>
+    <%= index %> 
+    <br>
+    <% index.forEach(function(e){ %> 
+      <%= e.name %>
+      <br>
+    <% }) %> 
+  </body>
+</html>
