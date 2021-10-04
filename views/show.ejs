@@ -13,12 +13,11 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
         <%= item.name %> 
         <br>
         <%= item.street %> 
+        <br>
+        <a href=`${<%= item.url.split('%2F').join('/') %>}`><%= item.url.split('%2F').join('/') %></a>
         <hr>
         <a href='/?search=<%= item.city %>'>home</a>
         <script src="" async defer></script>
