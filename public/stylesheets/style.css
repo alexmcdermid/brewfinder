@@ -19,11 +19,6 @@ form {
 .brewery {
   border: bisque;
   border-style: groove;
-  background-image: url("");
-}
-
-a {
-  color: black;
   display: block;
   text-decoration: none;
   flex: 0 0 33%; 
@@ -32,6 +27,10 @@ a {
   margin: 1%;
   border-radius: 25px;
   text-align: center;
+}
+
+a {
+  color: black;
 }
 
 .showImg {
