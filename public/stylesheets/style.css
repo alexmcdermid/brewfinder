@@ -23,14 +23,15 @@ form {
   text-decoration: none;
   flex: 0 0 33%; 
   height: 100px;
-  width: 300px;
+  max-width: 300px;
   margin: 1%;
   border-radius: 25px;
   text-align: center;
 }
 
 a {
-  color: black;
+  color: blue;
+  margin: 3%;
 }
 
 .showImg {

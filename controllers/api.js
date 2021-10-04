@@ -14,7 +14,6 @@ function index(req, res) {
         request(rootURL + process.env.TOKEN + '/' + req.query.search + '&s=json', function(err, response, body) {
           const index = JSON.parse(body)
           globalData = index;
-          console.log(index)
           res.render('index', {search: req.query.search, index: index});
         });
       } else {
@@ -36,7 +35,6 @@ function index(req, res) {
         if (toSend.imagecount>0) {
             request(imgUrl + process.env.TOKEN+ '/' + toSend.id+'&s=json',function(err,response,body){
                 imgData = JSON.parse(body)
-                console.log(imgData)
                 res.render('show', {item:toSend,img:imgData})
             })
         } else res.render('show', {item:toSend,img:imgData})
