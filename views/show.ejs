@@ -17,6 +17,7 @@
         <br>
         <%= item.street %> 
         <br>
+        <!--probably need to create a route handler for this and have it redirect there-->
         <a href=`${<%= item.url.split('%2F').join('/') %>}`><%= item.url.split('%2F').join('/') %></a>
         <hr>
         <a href='/?search=<%= item.city %>'>home</a>
