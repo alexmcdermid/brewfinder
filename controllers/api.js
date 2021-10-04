@@ -20,7 +20,9 @@ function index(req, res) {
           if (index[0].id!=null)
           res.render('index', {search: req.query.search, index: index});
           else {
-              request(rootURL2 + process.env.TOKEN + '/' + req.query.search + '&s=json', function(err, response, body){
+                //there are two urls one for city,state and another for 'pieces'
+                //this will search for pieces results if no city results are found
+                request(rootURL2 + process.env.TOKEN + '/' + req.query.search + '&s=json', function(err, response, body){
                 const index = JSON.parse(body)
                 globalData = index;
                 console.log(index)

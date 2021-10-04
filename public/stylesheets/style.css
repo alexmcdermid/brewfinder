@@ -20,10 +20,9 @@ form {
   border: bisque;
   border-style: groove;
   display: block;
-  text-decoration: none;
   flex: 0 0 33%; 
   height: 100px;
-  max-width: 300px;
+  max-width: 250px;
   margin: 1%;
   border-radius: 25px;
   text-align: center;
@@ -37,5 +36,5 @@ a {
 .showImg {
   height: 500px;
   width: 500px;
+  background-size:cover;
 }
-
