@@ -4,6 +4,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    Please input a city to search: 
     <form action="/" method="GET">
       <div class="input-group">
         <input type="text" name="search" autocomplete="off" class="form-control"
@@ -14,13 +15,20 @@
         </span>
       </div>
     </form>
-    <%= search %> 
     <br>
-    <%= index %> 
+    Breweries in: <%= search %> 
     <br>
-    <% index.forEach(function(e){ %> 
+    <hr>
+    <% if (index!=null) index.forEach(function(e){ %> 
       <%= e.name %>
       <br>
+      <%= e.status %>
+      <br>
+      <%= e.street %> <%= e.city %>
+      <br>
+      <a href='/<%= e.id %> '>Expand</a>
+      <br>
+      <hr>
     <% }) %> 
   </body>
 </html>
