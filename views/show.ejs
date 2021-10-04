@@ -10,15 +10,34 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel='stylesheet' href='/stylesheets/style.css' />
     </head>
     <body>
         <%= item.name %> 
         <br>
+        <%= item.status %> 
+        <br>
         <%= item.street %> 
         <br>
+        <%= item.city %> 
+        <br>
+        <%= item.state %> 
+        <br>
+        <%= item.zip %> 
+        <br>
+        <%= item.country %> 
+        <br>
+        <%= item.phone %> 
+        <br>
+        <% if (img!=null) {%> 
+            <% img.forEach(function(e) { %> 
+                <div class="showImg" style="background-image: url(<%=e.imageurl%>)"> 
+            
+                </div>
+            <% }) %> 
+        <% }  %>  
         <!--probably need to create a route handler for this and have it redirect there-->
-        <a href=`${<%= item.url.split('%2F').join('/') %>}`><%= item.url.split('%2F').join('/') %></a>
+        <a href='https://<%= item.url.split('%2F').join('/') %>'><%= item.url.split('%2F').join('/') %></a>
         <hr>
         <a href='/?search=<%= item.city %>'>home</a>
         <script src="" async defer></script>

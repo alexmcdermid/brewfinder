@@ -1,6 +1,8 @@
 const request = require('request');
-const rootURL = 'https://beermapping.com/webservice/locquery/';
+const rootURL = 'https://beermapping.com/webservice/loccity/';
+const imgUrl = 'https://beermapping.com/webservice/locimage/'
 let globalData = null;
+let imgData = null;
 
 module.exports = {
   index,
@@ -25,11 +27,19 @@ function index(req, res) {
       else {
         let toSend = null;
         let counter = 0;
+        //this resets the imgData to null so the old location images wont be used
+        imgData = null;
         globalData.forEach(function(e) {
             if (e.id == req.params.id) toSend = globalData[counter]
             counter++;
         })
-        res.render('show', {item:toSend})
+        if (toSend.imagecount>0) {
+            request(imgUrl + process.env.TOKEN+ '/' + toSend.id+'&s=json',function(err,response,body){
+                imgData = JSON.parse(body)
+                console.log(imgData)
+                res.render('show', {item:toSend,img:imgData})
+            })
+        } else res.render('show', {item:toSend,img:imgData})
       }
   }
   
