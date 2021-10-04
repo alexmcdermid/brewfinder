@@ -3,6 +3,34 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+form {
+  display: table;
+  margin: auto;
 }
+
+
+.landingPageDiv {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.brewery {
+  border: bisque;
+  border-style: groove;
+  background-image: url("");
+}
+
+a {
+  color: black;
+  display: block;
+  text-decoration: none;
+  flex: 0 0 33%; 
+  height: 100px;
+  width: 300px;
+  margin: 1%;
+  border-radius: 25px;
+  text-align: center;
+}
+
