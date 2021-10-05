@@ -33,25 +33,34 @@
           </nav>
           <br>
         <main>
-        <%= item.name %> 
-        <br>
-        <%= item.status %> 
-        <br>
-        <%= item.street %> 
-        <br>
-        <%= item.city %> 
-        <br>
-        <%= item.state %> 
-        <br>
-        <%= item.zip %> 
-        <br>
-        <%= item.country %> 
-        <br>
-        <%= item.phone %> 
-        <br>
-        <a id='link' href='https://<%= item.url.split('%2F').join('/') %>'><%= item.url.split('%2F').join('/') %></a>
-        <br>
-        <br>
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel orange lighten-5">
+                <span class="orange-text">
+                    <%= item.name %> 
+                    <br>
+                    <%= item.status %> 
+                    <br>
+                    <%= item.street %> 
+                    <br>
+                    <%= item.city %> 
+                    <br>
+                    <%= item.state %> 
+                    <br>
+                    <%= item.zip %> 
+                    <br>
+                    <%= item.country %> 
+                    <br>
+                    <%= item.phone %> 
+                    <br>
+                    <a class='link' href='https://<%= item.url.split('%2F').join('/') %>'><%= item.url.split('%2F').join('/') %></a>
+                    <br>
+                </span>
+                </div>
+            </div>
+        </div>
+                        
+       
         <div class="imagesBox">
             <% if (img!=null) {%> 
                 <% img.forEach(function(e) { %> 

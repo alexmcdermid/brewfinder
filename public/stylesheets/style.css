@@ -25,14 +25,11 @@ form {
 }
 
 
-#link {
-  margin: 0%;
+.link {
+  color: rgb(130, 229, 235);
+  text-decoration: underline;
 }
 
-#linkRight {
-  margin: 0%;
-  float: right;
-}
 
 .imagesBox {
   display: flex;
@@ -51,7 +48,7 @@ form {
   flex-direction: column;
   justify-content: space-between;
   height: 300px;
-
+  max-height: 300px;
 }
 
 /* label focus color */
