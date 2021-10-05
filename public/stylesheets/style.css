@@ -6,6 +6,7 @@ body {
   min-height: 100vh;
   flex-direction: column;
   background-color: #F5DEB3;
+  background-image: url('/images/favicon.png');
 }
 
 main {
@@ -58,14 +59,18 @@ form {
   color: rgb(255, 139, 14) !important;
 }
 
+.input-field input:focus {
+  background-color: #F5DEB3 !important;
+}
+
 .input-field input {
-  color:  rgb(243, 93, 10)!important;
+  color: rgb(243, 93, 10) !important;
 }
 
 /* label underline focus color */
 .row .input-field input:focus {
-  border-bottom: 1px solid rgb(255, 139, 14) !important;
-  box-shadow: 0 1px 0 0 #F5DEB3 !important
+  border-bottom: 1px solid rgb(130, 229, 235) !important;
+  box-shadow: 0 1px 0 0 rgb(130, 229, 235)!important;
 }
 
 

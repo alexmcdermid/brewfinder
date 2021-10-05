@@ -55,9 +55,7 @@
         <div class="imagesBox">
             <% if (img!=null) {%> 
                 <% img.forEach(function(e) { %> 
-                    <div class="showImg" style="background-image: url(<%=e.imageurl%>)"> 
-                
-                    </div>
+                    <img class='responsive-img' src='<%= e.imageurl %> '>
                 <% }) %> 
             <% }  %>  
         </div>
