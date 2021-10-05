@@ -33,6 +33,12 @@ form {
   float: right;
 }
 
+.imagesBox {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
 .showImg {
   height: 500px;
   width: 500px;
