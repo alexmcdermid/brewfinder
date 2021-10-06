@@ -43,8 +43,9 @@
             <div class="col s12">
                 <div class="card-panel orange lighten-5">
                 <span class="orange-text">
-                    <%= item.name %> 
-                    <br>
+                    <div class="somePad">
+                    <h3><%= item.name %> </h3>
+              
                     <%= item.status %> 
                     <br>
                     <%= item.street %> 
@@ -62,17 +63,20 @@
                     <a class='link' href='https://<%= item.url.split('%2F').join('/') %>'><%= item.url.split('%2F').join('/') %></a>
                     <br>
                     <br>
-                    Reviews:
-                    <br>
+                    </div>
+                    <ul class="collection with-header">
+                    <li class="collection-header"><h4>Reviews:</h4></li>
                     <% reviews.forEach(function(e){  %> 
-                        <%= e.review %>
-                        <br>
+                        <li class='collection-item'><%= e.review %></li>
                     <% }) %>  
+                     </ul>
                 </span>
                 <div class="card-action">
                     <form action="/<%= item.id %>/review " method="POST">
-                      <input type="text" name="review" class="orange-text">
-                      <button type="submit" class="btn orange-text">Add Review</button>
+                    <div class="input-field2 col s12">
+                        <input placeholder='Please enter a review' type="text" id='search' name="review" class="orange-text" class='form-control' autocomplete="off">
+                    </div>
+                    <button type="submit" class="btn white-text orange">Add Review</button>
                     </form>
                   </div>
                 </div>

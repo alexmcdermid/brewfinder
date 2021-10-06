@@ -68,7 +68,7 @@ async function show(req,res) {
   async function createReview(req,res) {
       await Review.create( {
         review: req.body.review,
-        googleID: 1,
+        googleId: 1,
         brewery: toSend.id
     })
       res.redirect(`/${toSend.id}`)
