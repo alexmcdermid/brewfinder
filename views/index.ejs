@@ -42,7 +42,7 @@
 <div class='row'>
   <form action="/" method="GET">
       <div class="input-field col s12">
-        <input id="search" name="search" autocomplete="off" class='form-control' type="text" class="validate">
+        <input id="search" name="search" autocomplete="off" class='form-control' type="text" class="validate" required="required" pattern="[A-Za-z0-9]{1,20}">
         <label for="search">Enter a city</label>
       </div>
       <div class="button col s12" id='button'>

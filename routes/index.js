@@ -9,6 +9,8 @@ router.get('/:id', apiCtrl.show);
 
 router.post('/:id/review', apiCtrl.createReview)
 
+router.get('/:id/delete/:id', apiCtrl.deleteReview)
+
 // Google OAuth callback route
 router.get('/oauth2callback', passport.authenticate(
   'google',

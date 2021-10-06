@@ -13,16 +13,15 @@ let counter = 0;
 module.exports = {
   index,
   show,
-  createReview
+  createReview,
+  deleteReview
 };
 
 function index(req, res) {
-    console.log('we made it to index')
       if (req.query.search) {
         request(rootURL + process.env.TOKEN + '/' + req.query.search + '&s=json', function(err, response, body) {
           const index = JSON.parse(body)
           globalData = index;
-          console.log(index)
           if (index[0].id!=null)
           res.render('index', {search: req.query.search, index: index, user:req.query.user});
           else {
@@ -31,7 +30,6 @@ function index(req, res) {
                 request(rootURL2 + process.env.TOKEN + '/' + req.query.search + '&s=json', function(err, response, body){
                 const index = JSON.parse(body)
                 globalData = index;
-                console.log(index)
                 res.render('index', {search: req.query.search, index: index, user: req.query.user});
               })
           }
@@ -42,12 +40,9 @@ function index(req, res) {
   }
 
 async function show(req,res) {
-      console.log('were in show') 
       if (globalData == null) res.render('index', {index: null, search: null, user:req.query.user})
       else {
-        console.log(req.params.id)
         let reviews = await Review.find({brewery:req.params.id})
-        console.log(reviews)
         toSend = null;
         counter = 0;
         //this resets the imgData to null so the old location images wont be used
@@ -72,5 +67,11 @@ async function show(req,res) {
         brewery: toSend.id
     })
       res.redirect(`/${toSend.id}`)
+  }
+
+  async function deleteReview(req,res) {
+    let toDeleteId = req.url.substr(req.url.length - 24);
+    await Review.findByIdAndDelete(toDeleteId)
+    res.redirect(`/${toSend.id}`)
   }
   
