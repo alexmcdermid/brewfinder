@@ -7,11 +7,7 @@ const passport = require('passport');
 router.get('/', apiCtrl.index);
 router.get('/:id', apiCtrl.show);
 
-// Google OAuth login route
-router.get('/auth/google', passport.authenticate(
-  'google',
-  { scope: ['profile', 'email'] }
-));
+router.post('/:id/review', apiCtrl.createReview)
 
 // Google OAuth callback route
 router.get('/oauth2callback', passport.authenticate(
@@ -20,6 +16,13 @@ router.get('/oauth2callback', passport.authenticate(
     successRedirect : '/',
     failureRedirect : '/'
   }
+));
+
+
+// Google OAuth login route
+router.get('/auth/google', passport.authenticate(
+  'google',
+  { scope: ['profile', 'email'],prompt: 'select_account',}
 ));
 
 // OAuth logout route

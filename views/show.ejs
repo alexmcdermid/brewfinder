@@ -26,8 +26,14 @@
                 <a href="/" class="left" style="font-size: x-large;">Brewfinder</a>
                 <ul class='right'>
                 <li><a href='/?search=<%= item.city %>'>Back</a></li>
-                <li><a href="/auth/google">Login</a></li>
-              </ul>
+                <li>
+                    <% if (user) { %>
+                        <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+                      <% } else { %>
+                        <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
+                      <% } %>    
+                </li>    
+                </ul>
             </div>
           </div>
           </nav>
@@ -56,7 +62,14 @@
                     <a class='link' href='https://<%= item.url.split('%2F').join('/') %>'><%= item.url.split('%2F').join('/') %></a>
                     <br>
                 </span>
+                <div class="card-action">
+                    <form action="/<%= item.id %>/review " method="POST">
+                      <input type="text" name="text" class="orange-text">
+                      <button type="submit" class="btn orange-text">Add Review</button>
+                    </form>
+                  </div>
                 </div>
+                
             </div>
         </div>
                         
@@ -77,7 +90,6 @@
               <h5 class="white-text">Footer Content</h5>
               <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
             </div>
-           
           </div>
         </div>
         <div class="footer-copyright">
