@@ -59,7 +59,7 @@
         <div class="row">
             <div class="col s12">
                 <div class="card-panel orange lighten-5">
-                <span class="orange-text">
+                <span class="orange-text center-align">
                     <div class="somePad">
                     <h3><%= item.name %> </h3>
               
@@ -67,21 +67,20 @@
                     <br>
                     <%= item.street %> 
                     <br>
-                    <%= item.city %> 
-                    <br>
-                    <%= item.state %> 
-                    <br>
+                    <%= item.city %>, 
+                    <%= item.state %>, 
                     <%= item.zip %> 
                     <br>
                     <%= item.country %> 
                     <br>
                     <%= item.phone %> 
                     <br>
+                    <br>
                     <a class='link' href='https://<%= item.url.split('%2F').join('/') %>'><%= item.url.split('%2F').join('/') %></a>
                     <br>
                     <br>
                     </div>
-                    <ul class="collection with-header">
+                    <ul class="collection with-header left-align">
                     <li class="collection-header"><h4>Reviews:</h4></li>
                     <% reviews.forEach(function(e){  %> 
                         <li class='collection-item'><div><%= e.review %><a href="/<%= item.id %>/delete/<%= e._id %> " class="secondary-content"><i class="material-icons orange-text text-darken-1">delete</i></a></div></li>
