@@ -42,9 +42,12 @@ function index(req, res) {
   }
 
 async function show(req,res) {
-      console.log('were in show')
+      console.log('were in show') 
       if (globalData == null) res.render('index', {index: null, search: null, user:req.query.user})
       else {
+        console.log(req.params.id)
+        let reviews = await Review.find({brewery:req.params.id})
+        console.log(reviews)
         toSend = null;
         counter = 0;
         //this resets the imgData to null so the old location images wont be used
@@ -56,19 +59,18 @@ async function show(req,res) {
         if (toSend.imagecount>0 && toSend.imagecount!=null) {
             request(imgUrl + process.env.TOKEN+ '/' + toSend.id+'&s=json',function(err,response,body){
                 imgData = JSON.parse(body)
-                res.render('show', {item:toSend,img:imgData,user:req.query.user})
+                res.render('show', {item:toSend,img:imgData,user:req.query.user,reviews})
             })
-        } else res.render('show', {item:toSend,img:imgData,user:req.query.user})
+        } else res.render('show', {item:toSend,img:imgData,user:req.query.user,reviews})
       }
   }
 
   async function createReview(req,res) {
-      let obj = {
-          review: req.body.review,
-          googleID: 1,
-          brewery: toSend.id
-      }
-      await Review.create(obj)
+      await Review.create( {
+        review: req.body.review,
+        googleID: 1,
+        brewery: toSend.id
+    })
       res.redirect(`/${toSend.id}`)
   }
   

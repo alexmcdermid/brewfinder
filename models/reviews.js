@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const reviewSchema = new mongoose.Schema({
-  text: String,
+const reviewSchema = new Schema({
+  review: String,
   googleId: String,
-  Brewery: String
+  brewery: Number
 }, {
   timestamps: true
 });

@@ -61,6 +61,13 @@
                     <br>
                     <a class='link' href='https://<%= item.url.split('%2F').join('/') %>'><%= item.url.split('%2F').join('/') %></a>
                     <br>
+                    <br>
+                    Reviews:
+                    <br>
+                    <% reviews.forEach(function(e){  %> 
+                        <%= e.review %>
+                        <br>
+                    <% }) %>  
                 </span>
                 <div class="card-action">
                     <form action="/<%= item.id %>/review " method="POST">
