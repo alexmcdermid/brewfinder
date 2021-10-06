@@ -41,7 +41,7 @@ function index(req, res) {
       }
   }
 
-  function show(req,res) {
+async function show(req,res) {
       console.log('were in show')
       if (globalData == null) res.render('index', {index: null, search: null, user:req.query.user})
       else {

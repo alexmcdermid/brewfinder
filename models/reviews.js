@@ -1,6 +1,7 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var reviewSchema = new mongoose.Schema({
+const reviewSchema = new mongoose.Schema({
   text: String,
   googleId: String,
   Brewery: String
