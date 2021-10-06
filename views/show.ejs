@@ -8,6 +8,8 @@
         <link rel='stylesheet' href='/stylesheets/style.css' />
         <!-- Google Icon Fonts used by Materialize -->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
       <!-- Materialize CSS Framework -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
       <link rel="stylesheet" href="stylesheets/style.css" />
@@ -20,6 +22,21 @@
 
     </head>
     <body>
+        <script>
+            M.AutoInit();
+
+            $( document ).ready(function(){
+
+
+            $('.carousel').carousel(); //carousel init
+
+
+            $('.carousel.carousel-slider').carousel({
+                fullWidth: true
+            });
+            });
+
+        </script>
         <nav class=" orange darken-3">
             <div class="container ">
             <div class="nav-wrapper">
@@ -28,9 +45,9 @@
                 <li><a href='/?search=<%= item.city %>'>Back</a></li>
                 <li>
                     <% if (user) { %>
-                        <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+                        <a href="/logout">Log Out</a>
                       <% } else { %>
-                        <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
+                        <a href="/auth/google">Login</a>
                       <% } %>    
                 </li>    
                 </ul>
@@ -67,7 +84,7 @@
                     <ul class="collection with-header">
                     <li class="collection-header"><h4>Reviews:</h4></li>
                     <% reviews.forEach(function(e){  %> 
-                        <li class='collection-item'><div><%= e.review %><a href="/<%= item.id %>/delete/<%= e._id %> " class="secondary-content"><i class="material-icons">delete</i></a></div></li>
+                        <li class='collection-item'><div><%= e.review %><a href="/<%= item.id %>/delete/<%= e._id %> " class="secondary-content"><i class="material-icons orange-text text-darken-1">delete</i></a></div></li>
                     <% }) %>  
                      </ul>
                 </span>
@@ -83,16 +100,30 @@
                 
             </div>
         </div>
-                        
-       
-        <div class="imagesBox">
             <% if (img!=null) {%> 
+                <div class='row'>
+                <div class="col s12 m8 l6">
+                <div class="carousel carousel-slider" >
+
+                <% let counter = 1 %> 
                 <% img.forEach(function(e) { %> 
-                    <img class='responsive-img' src='<%= e.imageurl %> '>
+                        <% if (counter==1){ %> <a class="carousel-item" href="#one!"><img src="<%= e.imageurl %> "></a><% } %> 
+                        <% if (counter==2){ %> <a class="carousel-item" href="#two!"><img src="<%= e.imageurl %> "></a><% } %> 
+                        <% if (counter==3){ %> <a class="carousel-item" href="#three!"><img src="<%= e.imageurl %> "></a><% } %> 
+                        <% if (counter==4){ %> <a class="carousel-item" href="#four!"><img src="<%= e.imageurl %> "></a><% } %>
+                        <% if (counter==5){ %> <a class="carousel-item" href="#five!"><img src="<%= e.imageurl %> "></a><% } %> 
+                        <% if (counter==6){ %> <a class="carousel-item" href="#six!"><img src="<%= e.imageurl %> "></a><% } %>
+                        <% if (counter==7){ %> <a class="carousel-item" href="#seven!"><img src="<%= e.imageurl %> "></a><% } %> 
+                        <% if (counter==8){ %> <a class="carousel-item" href="#eight!"><img src="<%= e.imageurl %> "></a><% } %>
+                        <% if (counter==9){ %> <a class="carousel-item" href="#nine!"><img src="<%= e.imageurl %> "></a><% } %> 
+                        <% counter++ %> 
                 <% }) %> 
+            </div>
+            </div>
+            </div>
+
             <% }  %>  
-        </div>
-    </main>
+</main>
     <br>
     <footer class="page-footer orange darken-3">
         <div class="container">
