@@ -43,13 +43,6 @@
                 <a href="/" class="left" style="font-size: x-large;">Brewfinder</a>
                 <ul class='right'>
                 <li><a href='/?search=<%= item.city %>'>Back</a></li>
-                <li>
-                    <% if (user) { %>
-                        <a href="/logout">Log Out</a>
-                      <% } else { %>
-                        <a href="/auth/google">Login</a>
-                      <% } %>    
-                </li>    
                 </ul>
             </div>
           </div>
@@ -83,16 +76,25 @@
                     <ul class="collection with-header left-align">
                     <li class="collection-header"><h4>Reviews:</h4></li>
                     <% reviews.forEach(function(e){  %> 
+                        <% if (user.id == e.googleId) { %>
                         <li class='collection-item'><div><%= e.review %><a href="/<%= item.id %>/delete/<%= e._id %> " class="secondary-content"><i class="material-icons orange-text text-darken-1">delete</i></a></div></li>
-                    <% }) %>  
+                        <% } else { %>
+                        <li class='collection-item'><div><%= e.review %></div></li>
+                        <% } %>
+                        <% }) %>  
                      </ul>
                 </span>
                 <div class="card-action">
-                    <form action="/<%= item.id %>/review " method="POST">
+                    <form action="/<%= item.id %>/review " method="POST" onkeydown="return event.key != 'Enter';">
                     <div class="input-field2 col s12">
                         <input placeholder='Please enter a review' type="text" id='search' name="review" class="orange-text" class='form-control' autocomplete="off" required="required" pattern="[A-Za-z0-9_.?! ]{1,40}">
                     </div>
-                    <button type="submit" class="btn white-text orange">Add Review</button>
+                        <% if (user) { %>
+                        <button type="submit" class="btn white-text orange">Add Review</button>
+                        <% } else { %>
+                        <a href="/auth/google" style="text-align: center;"><i class="material-icons left-align">vpn_key</i></a>
+                        <a href="/auth/google" style="text-align: center;">Please login to review</a>
+                      <% } %>
                     </form>
                   </div>
                 </div>
