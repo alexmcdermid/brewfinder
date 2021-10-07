@@ -18,7 +18,6 @@ module.exports = {
 };
 
 function index(req, res) {
-    console.log("req.user variable generated",req.user)
       if (req.query.search) {
         request(rootURL + process.env.TOKEN + '/' + req.query.search + '&s=json', function(err, response, body) {
           const index = JSON.parse(body)

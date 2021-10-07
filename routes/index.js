@@ -9,7 +9,6 @@ router.get('/', apiCtrl.index);
 //this needs to be placed at the top or some times our index get breaks this
 router.get('/oauth2callback', function(req, res, next) {
   passport.authenticate('google', function(err, user, info) {
-    console.log(req.url)
     if (err) { return next(err); }
     if (!user) { return res.redirect('/'); }
     req.logIn(user, function(err) {
