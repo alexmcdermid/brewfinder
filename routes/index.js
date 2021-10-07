@@ -27,7 +27,7 @@ router.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-
+router.get('', apiCtrl.index)
 router.get('/', apiCtrl.index);
 router.get('/:id', apiCtrl.show);
 
