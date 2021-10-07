@@ -90,14 +90,16 @@
                 </span>
                 <div class="card-action">
                     <form action="/<%= item.id %>/review " method="POST" onkeydown="return event.key != 'Enter';">
-                    <div class="input-field2 col s12">
-                        <input placeholder='Please enter a review' type="text" id='search' name="review" class="orange-text" class='form-control' autocomplete="off" required="required" pattern="[A-Za-z0-9_.?! ]{1,40}">
-                    </div>
+                        <% if (user) { %> 
+                            <div class="input-field2 col s12">
+                                <input placeholder='Please enter a review' type="text" id='search' name="review" class="orange-text" class='form-control' autocomplete="off" required="required" pattern="[A-Za-z0-9_.?! ]{1,40}">
+                            </div>
+                        <% } %> 
                         <% if (user) { %>
                         <button type="submit" class="btn white-text orange">Add Review</button>
                         <% } else { %>
-                        <a href="/auth/google" style="text-align: center;"><i class="material-icons left-align">vpn_key</i></a>
-                        <a href="/auth/google" style="text-align: center;">Please login to review</a>
+                        <a href="/auth/google" style="text-align: center;" class='orange-text'>Click here to login and review</a>
+                        <a href="/auth/google" style="text-align: center;"><i class="material-icons left-align orange-text lighten-5">vpn_key</i></a>
                       <% } %>
                     </form>
                   </div>
