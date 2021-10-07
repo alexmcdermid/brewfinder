@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const apiCtrl = require('../controllers/api');
 const passport = require('passport');
+const request = require('request');
 
 router.get('', apiCtrl.index)
 router.get('/', apiCtrl.index);
@@ -10,9 +11,13 @@ router.get('/', apiCtrl.index);
 router.get('/oauth2callback', function(req, res, next) {
   passport.authenticate('google', function(err, user, info) {
     if (err) { return next(err); }
-    if (!user) { return res.redirect('/'); }
+    if (!user) { 
+      console.log("THIS IS THE COOKIE"+request.cookie.name)
+      return res.redirect('/'); 
+    }
     req.logIn(user, function(err) {
       if (err) { return next(err); }
+      console.log("THIS IS THE COOKIE"+request.cookie.name)
       return res.redirect('/');
     });
   })(req, res, next);
@@ -27,6 +32,7 @@ router.get('/auth/google', passport.authenticate(
 // OAuth logout route
 router.get('/logout', function(req, res){
   req.logout();
+  console.log("THIS IS THE COOKIE"+request.cookie.name)
   res.redirect('/');
 });
 
