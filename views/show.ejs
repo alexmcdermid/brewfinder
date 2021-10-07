@@ -78,15 +78,27 @@
                     <% reviews.forEach(function(e){  %> 
                         <% if (user) { %>
                             <% if (user.id == e.googleId){ %> 
-                            <li class='collection-item'><div><%= e.review %><a href="/<%= item.id %>/delete/<%= e._id %> " class="secondary-content"><i class="material-icons orange-text text-darken-1">delete</i></a></div></li>
+                            <li class='collection-item avatar'>
+                            <img src='<%= e.photos[0].value %> ' class='circle'>
+                            <span class="title"><%= e.userName %> </span>
+                            <div><p><%= e.review %></p>
+                            <a href="/<%= item.id %>/delete/<%= e._id %> " class="secondary-content"><i class="material-icons orange-text text-darken-1">delete</i></a>
+                            </div></li>
                             <% } else {%> 
-                            <li class='collection-item'><div><%= e.review %></div></li>
+                                <li class='collection-item avatar'>
+                                <img src='<%= e.photos[0].value %> ' class='circle'>
+                                <span class="title"><%= e.userName %> </span>
+                                <div><p><%= e.review %></p>
+                                </div></li>
                             <% } %> 
                         <% } else { %>
-                        <li class='collection-item'><div><%= e.review %></div></li>
+                            <li class='collection-item avatar'>
+                            <img src='<%= e.photos[0].value %> ' class='circle'>
+                            <span class="title"><%= e.userName %> </span>
+                            <div><p><%= e.review %></p>
+                            </div></li>
                         <% } %>
-                        <% }) %>  
-                     </ul>
+                    <% }) %>  
                 </span>
                 <div class="card-action">
                     <form action="/<%= item.id %>/review " method="POST" onkeydown="return event.key != 'Enter';">

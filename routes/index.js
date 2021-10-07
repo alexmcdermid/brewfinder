@@ -3,6 +3,7 @@ var router = express.Router();
 const apiCtrl = require('../controllers/api');
 const passport = require('passport');
 
+//this needs to be placed at the top or some times our index get breaks this
 router.get('/oauth2callback', function(req, res, next) {
   passport.authenticate('google', function(err, user, info) {
     if (err) { return next(err); }

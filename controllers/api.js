@@ -65,6 +65,8 @@ async function show(req,res) {
       await Review.create( {
         review: req.body.review,
         googleId: req.user.id,
+        userName: req.user.name,
+        photos: req.user.photos,
         brewery: toSend.id
     })
       res.redirect(`/${toSend.id}`)
