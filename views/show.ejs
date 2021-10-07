@@ -19,6 +19,7 @@
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <link rel="shortcut icon" type="image/jpg" href="/images/favicon.ico"/>
+      <link rel="icon" type="image/jpg" href="/images/favicon.ico"/>
 
     </head>
     <body>
@@ -103,12 +104,22 @@
                 <div class="card-action">
                     <form action="/<%= item.id %>/review " method="POST" onkeydown="return event.key != 'Enter';">
                         <% if (user) { %> 
+                            <% let hasReviewed = 0; %> 
+                            <% reviews.forEach(function(e){ %> 
+                                <% if(e.googleId == user.id){ %> 
+                                    <%  hasReviewed = 1; %> 
+                                <% } %> 
+                            <% }) %> 
+                            <% if (hasReviewed==0){ %> 
                             <div class="input-field2 col s12">
                                 <input placeholder='Please enter a review' type="text" id='search' name="review" class="orange-text" class='form-control' autocomplete="off" required="required" pattern="[A-Za-z0-9_.?! ]{1,200}">
                             </div>
-                        <% } %> 
-                        <% if (user) { %>
-                        <button type="submit" class="btn white-text orange">Add Review</button>
+                            <% } %> 
+                            <% if(hasReviewed == 0){ %> 
+                                <button type="submit" class="btn white-text orange">Add Review</button>
+                            <% } else {%> 
+                                <div style="text-align: center;">Please remove your old review before reviewing again.</div>
+                            <% } %> 
                         <% } else { %>
                         <a href="/auth/google" style="text-align: center;" class='orange-text'>Click here to login and review</a>
                         <a href="/auth/google" style="text-align: center;"><i class="material-icons left-align orange-text lighten-5">vpn_key</i></a>
