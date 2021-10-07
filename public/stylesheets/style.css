@@ -63,6 +63,11 @@ form {
   color: rgb(243, 93, 10) !important;
 }
 
+.input-field label {
+  color: rgb(243, 93, 10) !important;
+  font-weight: bold;
+}
+
 /* label underline focus color */
 .row .input-field input:focus {
   border-bottom: 1px solid rgb(130, 229, 235) !important;
