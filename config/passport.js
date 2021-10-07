@@ -1,8 +1,7 @@
-const passport = require('passport');
+const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const Review = require('../models/reviews');
-const Student = require('../models/student');
 
+const Student = require('../models/student')
 
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
@@ -10,6 +9,7 @@ passport.use(new GoogleStrategy({
     callbackURL: process.env.GOOGLE_CALLBACK
   },
   function(accessToken, refreshToken, profile, cb) {
+    console.log("Google's info:", profile)
     Student.findOne({ 'googleId': profile.id }, function(err, student) {
       if (err) return cb(err);
       if (student) {
@@ -21,8 +21,6 @@ passport.use(new GoogleStrategy({
           email: profile.emails[0].value,
           googleId: profile.id
         });
-        console.log('this is a new student'+newStudent)
-        createStudent(newStudent)
         newStudent.save(function(err) {
           if (err) return cb(err);
           return cb(null, newStudent);
@@ -32,16 +30,14 @@ passport.use(new GoogleStrategy({
   }
 ));
 
+// converts {name: "Eric"} ---> sessionID
 passport.serializeUser(function(student, done) {
     done(null, student.id);
 });
 
+// converts sessionID ---> {name: "Yousuf"}
 passport.deserializeUser(function(id, done) {
     Student.findById(id, function(err, student) {
       done(err, student);
     });
-  });
-
-async function createStudent(newStudent) {
-    Student.create(newStudent)
-}
+});

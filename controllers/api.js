@@ -18,29 +18,30 @@ module.exports = {
 };
 
 function index(req, res) {
+    console.log("req.user variable generated",req.user)
       if (req.query.search) {
         request(rootURL + process.env.TOKEN + '/' + req.query.search + '&s=json', function(err, response, body) {
           const index = JSON.parse(body)
           globalData = index;
           if (index[0].id!=null)
-          res.render('index', {search: req.query.search, index: index, user:req.query.user});
+          res.render('index', {search: req.query.search, index: index, user:req.user});
           else {
                 //there are two urls one for city,state and another for 'pieces'
                 //this will search for pieces results if no city results are found
                 request(rootURL2 + process.env.TOKEN + '/' + req.query.search + '&s=json', function(err, response, body){
                 const index = JSON.parse(body)
                 globalData = index;
-                res.render('index', {search: req.query.search, index: index, user: req.query.user});
+                res.render('index', {search: req.query.search, index: index, user: req.user});
               })
           }
         });
       } else {
-        res.render('index', {index: null, search: null, user: req.query.user});
+        res.render('index', {index: null, search: null, user: req.user});
       }
   }
 
 async function show(req,res) {
-      if (globalData == null) res.render('index', {index: null, search: null, user:req.query.user})
+      if (globalData == null) res.render('index', {index: null, search: null, user:req.user})
       else {
         let reviews = await Review.find({brewery:req.params.id})
         toSend = null;
@@ -54,9 +55,9 @@ async function show(req,res) {
         if (toSend.imagecount>0 && toSend.imagecount!=null) {
             request(imgUrl + process.env.TOKEN+ '/' + toSend.id+'&s=json',function(err,response,body){
                 imgData = JSON.parse(body)
-                res.render('show', {item:toSend,img:imgData,user:req.query.user,reviews})
+                res.render('show', {item:toSend,img:imgData,user:req.user,reviews})
             })
-        } else res.render('show', {item:toSend,img:imgData,user:req.query.user,reviews})
+        } else res.render('show', {item:toSend,img:imgData,user:req.user,reviews})
       }
   }
 
