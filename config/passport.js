@@ -31,12 +31,12 @@ passport.use(new GoogleStrategy({
   }
 ));
 
-// converts {name: "Eric"} ---> sessionID
+// converts {name: ""} ---> sessionID
 passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
 
-// converts sessionID ---> {name: "Yousuf"}
+// converts sessionID ---> {name: ""}
 passport.deserializeUser(function(id, done) {
     User.findById(id, function(err, user) {
       done(err, user);
