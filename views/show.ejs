@@ -76,8 +76,12 @@
                     <ul class="collection with-header left-align">
                     <li class="collection-header"><h4>Reviews:</h4></li>
                     <% reviews.forEach(function(e){  %> 
-                        <% if (user.id == e.googleId) { %>
-                        <li class='collection-item'><div><%= e.review %><a href="/<%= item.id %>/delete/<%= e._id %> " class="secondary-content"><i class="material-icons orange-text text-darken-1">delete</i></a></div></li>
+                        <% if (user) { %>
+                            <% if (user.id == e.googleId){ %> 
+                            <li class='collection-item'><div><%= e.review %><a href="/<%= item.id %>/delete/<%= e._id %> " class="secondary-content"><i class="material-icons orange-text text-darken-1">delete</i></a></div></li>
+                            <% } else {%> 
+                            <li class='collection-item'><div><%= e.review %></div></li>
+                            <% } %> 
                         <% } else { %>
                         <li class='collection-item'><div><%= e.review %></div></li>
                         <% } %>
