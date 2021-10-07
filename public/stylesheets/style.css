@@ -52,7 +52,7 @@ form {
 
 /* label focus color */
 .input-field input:focus + label {
-  color: rgb(255, 139, 14) !important;
+  color: rgb(130, 229, 235) !important;
 }
 
 .input-field input:focus {
@@ -64,8 +64,7 @@ form {
 }
 
 .input-field label {
-  color: rgb(243, 93, 10) !important;
-  font-weight: bold;
+  color: rgb(255, 139, 14) !important;
 }
 
 /* label underline focus color */
