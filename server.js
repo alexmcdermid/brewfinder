@@ -31,6 +31,7 @@ app.use(function (req, res, next) {
   if (req.url.substring(0,2)!='/o'&&req.url.substring(0,2)!='/a'&&req.url.substring(0,3)!='/st'&&req.url.substring(0,2)!='/i'&&req.url.substring(0,2)!='/l') {
     var toGive = req.url;
     res.cookie('cookieName',toGive, { maxAge: 900000, httpOnly: true });
+    req.cookies.cookieName=toGive
   }
   console.log("cookie"+cookie); 
   next(); // <-- important!
