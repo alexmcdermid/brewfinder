@@ -13,16 +13,12 @@ router.get('/oauth2callback', function(req, res, next) {
   passport.authenticate('google', function(err, user, info) {
     if (err) { return next(err); }
     if (!user) { 
-      console.log("THIS IS THE COOKIE"+req.cookies)
-      return res.redirect('/'); 
+      return res.redirect(req.cookies['cookieName']); 
     }
     req.logIn(user, function(err) {
       if (err) { return next(err); }
-      console.log("THIS IS THE COOKIE"+typeof req.cookies)
-      
-      console.log("THIS IS THE COOKIE????"+req.headers.cookie)
-
-      return res.redirect('/');
+      //this returns to the cookie which is the last page before the google oauth request
+      return res.redirect(req.cookies['cookieName']);
     });
   })(req, res, next);
 });
@@ -37,8 +33,7 @@ router.get('/auth/google', passport.authenticate(
 // OAuth logout route
 router.get('/logout', function(req, res){
   req.logout();
-  console.log("THIS IS THE COOKIE"+req.cookies)
-  res.redirect('/');
+  res.redirect(req.cookies['cookieName']);
 });
 
 

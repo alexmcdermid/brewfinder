@@ -33,7 +33,6 @@ app.use(function (req, res, next) {
     res.cookie('cookieName',toGive, { maxAge: 900000, httpOnly: true });
     req.cookies.cookieName=toGive
   }
-  console.log("cookie"+cookie); 
   next(); // <-- important!
 });
 app.use(express.static(path.join(__dirname, 'public')));
