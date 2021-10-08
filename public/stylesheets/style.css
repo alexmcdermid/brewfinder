@@ -16,6 +16,10 @@ main {
   align-content: center;
 }
     
+.button:hover {
+  cursor: pointer; 
+}
+
 
 form {
   display: flex;
@@ -27,6 +31,10 @@ form {
 .link {
   color: rgb(130, 229, 235);
   text-decoration: underline;
+}
+
+.link:hover {
+  cursor: pointer; 
 }
 
 
