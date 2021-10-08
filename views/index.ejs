@@ -63,9 +63,9 @@
         <div class=" col s12 m4 l3">
           <div class="card hoverable #ffb74d orange lighten-5">
             <div class="card-content orange-text">
-              <span class="card-title"><%= e.name %></span>
+              <span class="card-title"><a href='/<%= e.id %>'><%= e.name %></a></span>
               </a>
-            
+              
               <%= e.street %> <%= e.city %>
               <br>
               <% if (e.imagecount>0) {%>
