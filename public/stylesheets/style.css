@@ -58,6 +58,13 @@ form {
   overflow: hidden;
 }
 
+.card-content {
+  max-height: 250px;
+}
+
+.card-action {
+}
+
 /* label focus color */
 .input-field input:focus + label {
   color: rgb(130, 229, 235) !important;
